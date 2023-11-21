@@ -19,8 +19,6 @@ public class finish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while (!win)
-        {
             if (player.transform.position == this.transform.position)
             {
                 message.SetActive(true);
@@ -30,6 +28,5 @@ public class finish : MonoBehaviour
             {
                 message.SetActive(false);
             }
-        }
     }
 }
