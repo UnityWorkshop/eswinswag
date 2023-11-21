@@ -73,3 +73,5 @@ crashlytics-build.properties
 Assets/PlayMaker
 Assets/Plugins
 #!/[Aa]ssets/SDC/*
+
+.idea/
