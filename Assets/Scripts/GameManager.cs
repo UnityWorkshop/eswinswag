@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManagr : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject message;
