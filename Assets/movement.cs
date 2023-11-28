@@ -22,19 +22,30 @@ public class Movement : MonoBehaviour
             gameObject.transform.position = newPosition;
       
         } 
+       else if (Input.GetKeyDown(KeyCode.S))
+       {
+           Vector2 oldPosition = gameObject.transform.position;
+           Vector2 newPosition = gameObject.transform.position;
+
+           newPosition.y = oldPosition.y - 1;
+           gameObject.transform.position = newPosition;
+       }
+       else if (Input.GetKeyDown(KeyCode.A))
+       {
+           Vector2 oldPosition = gameObject.transform.position;
+           Vector2 newPosition = gameObject.transform.position;
+           newPosition.x = oldPosition.x - 1;
+           gameObject.transform.position = newPosition;
+       }
+       else if (Input.GetKeyDown(KeyCode.D))
+       {
+           Vector2 oldPosition = gameObject.transform.position;
+           Vector2 newPosition = gameObject.transform.position;
+           newPosition.x = oldPosition.x + 1;
+           gameObject.transform.position = newPosition;
+       }
     }
 
 
 }
 
-class tillvector
-{
-    public float x;
-    public float y;
-
-    public tillvector()
-    {
-        x = 0;
-        y = 5;
-    }
-}
