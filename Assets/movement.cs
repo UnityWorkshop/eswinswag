@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,15 +14,33 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.W))
-        {
-            Vector2 oldPosition = gameObject.transform.position;
-            Vector2 newPosition = gameObject.transform.position;
+        Move(KeyCode.W, Vector3.up);
+        Move(KeyCode.A, Vector3.left);
+        Move(KeyCode.S, Vector3.down);
+        Move(KeyCode.D, Vector3.right);
+    }
 
-            newPosition.y = oldPosition.y + 1;
-            gameObject.transform.position = newPosition;
-      
-        } 
+    void Move(KeyCode key,Vector3 direction)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            if (CheckMove(direction))
+            {
+                transform.position += direction;
+            }
+        }
+    }
+
+    bool CheckMove(Vector3 direction)
+    {
+        Wall[] walls = FindObjectsOfType<Wall>();
+        foreach (Wall current in walls)
+        {
+            if (transform.position + direction==current.transform.position) {
+                return false;
+             }
+        }
+        return true;
     }
 
     public void delete()
@@ -30,16 +49,4 @@ public class Movement : MonoBehaviour
     }
 
 
-}
-
-class tillvector
-{
-    public float x;
-    public float y;
-
-    public tillvector()
-    {
-        x = 0;
-        y = 5;
-    }
 }
