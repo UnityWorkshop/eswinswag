@@ -6,18 +6,33 @@ using UnityEngine;
 
 public class timeCounter : MonoBehaviour
 {
-    [SerializeField] GameObject textObject;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject message;
+    [SerializeField] GameObject targetBlock;
 
-    private TMP_Text timeText;
+    private bool win = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        timeText = textObject.GetComponent<TMP_Text>();
+        
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void Update()
     {
-        timeText.text = Time.time.ToString("F2");
+        if (!win)
+        {
+            if (player.transform.position == targetBlock.transform.position)
+            {
+                message.SetActive(true);
+                player.GetComponent<Movement>().delete();
+                win = true;
+            }
+            else
+            {
+                message.SetActive(false);
+                this.GetComponent<TMP_Text>().text = Time.time.ToString("F2");
+            }
+        }
     }
 }

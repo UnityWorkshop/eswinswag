@@ -24,6 +24,11 @@ public class Movement : MonoBehaviour
         } 
     }
 
+    public void delete()
+    {
+        Destroy(gameObject);
+    }
+
 
 }
 

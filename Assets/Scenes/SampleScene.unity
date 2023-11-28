@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 129834841}
   - component: {fileID: 129834840}
   m_Layer: 5
-  m_Name: time
+  m_Name: timeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +460,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652998191}
-  - component: {fileID: 652998190}
   m_Layer: 0
   m_Name: targetBlock
   m_TagString: Untagged
@@ -468,20 +467,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &652998190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652998189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d1f62b159069474e80059cdea5ae98d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2146486192}
-  message: {fileID: 1972485975}
 --- !u!4 &652998191
 Transform:
   m_ObjectHideFlags: 0
@@ -872,7 +857,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c2a6cd37d9d2d428c30eb1f2887d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 1880931197}
+  player: {fileID: 2146486192}
+  message: {fileID: 1972485975}
+  targetBlock: {fileID: 652998189}
 --- !u!1 &1972485975
 GameObject:
   m_ObjectHideFlags: 0
