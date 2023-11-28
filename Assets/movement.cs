@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,17 +25,17 @@ public class Movement : MonoBehaviour
         } 
     }
 
-
-}
-
-class tillvector
-{
-    public float x;
-    public float y;
-
-    public tillvector()
+    bool CheckMove(Vector3 direction)
     {
-        x = 0;
-        y = 5;
+        Wall[] walls = FindObjectsOfType<Wall>();
+        foreach (Wall current in walls)
+        {
+            if (transform.position + direction==current.transform.position) {
+                return false;
+             }
+        }
+        return true;
     }
+
+
 }
