@@ -10,24 +10,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject targetBlock;
     [SerializeField] TMP_Text timeTMP;
 
-    private bool win = false;
+    bool _won;
 
     // Update is called once per frame
     void Update()
     {
-        if (!win)
+        if (_won)
+            return;
+        if (player.transform.position == targetBlock.transform.position)
         {
-            if (player.transform.position == targetBlock.transform.position)
-            {
-                message.SetActive(true);
-                player.GetComponent<Movement>().delete();
-                win = true;
-            }
-            else
-            {
-                message.SetActive(false);
-                timeTMP.GetComponent<timeCounter>().count();
-            }
+            message.SetActive(true);
+            player.GetComponent<Movement>().delete();
+            _won = true;
+        }
+        else
+        {
+            message.SetActive(false);
+            timeTMP.GetComponent<timeCounter>().count();
         }
     }
 }
