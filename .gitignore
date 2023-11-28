@@ -75,3 +75,5 @@ Assets/Plugins
 #!/[Aa]ssets/SDC/*
 
 .idea/
+
+.vscode/
