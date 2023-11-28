@@ -14,41 +14,22 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.W))
-        {
-            Vector2 oldPosition = gameObject.transform.position;
-            Vector2 newPosition = gameObject.transform.position;
-
-            newPosition.y = oldPosition.y + 1;
-            gameObject.transform.position = newPosition;
-      
-        } 
-       else if (Input.GetKeyDown(KeyCode.S))
-       {
-           Vector2 oldPosition = gameObject.transform.position;
-           Vector2 newPosition = gameObject.transform.position;
-
-           newPosition.y = oldPosition.y - 1;
-           gameObject.transform.position = newPosition;
-       }
-       else if (Input.GetKeyDown(KeyCode.A))
-       {
-           Vector2 oldPosition = gameObject.transform.position;
-           Vector2 newPosition = gameObject.transform.position;
-           newPosition.x = oldPosition.x - 1;
-           gameObject.transform.position = newPosition;
-       }
-       else if (Input.GetKeyDown(KeyCode.D))
-       {
-           Vector2 oldPosition = gameObject.transform.position;
-           Vector2 newPosition = gameObject.transform.position;
-           newPosition.x = oldPosition.x + 1;
-           gameObject.transform.position = newPosition;
-       }
+        Move(KeyCode.W, Vector3.up);
+        Move(KeyCode.A, Vector3.left);
+        Move(KeyCode.S, Vector3.down);
+        Move(KeyCode.D, Vector3.right);
     }
 
-
-}
+    void Move(KeyCode key,Vector3 direction)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            if (CheckMove(direction))
+            {
+                transform.position += direction;
+            }
+        }
+    }
 
     bool CheckMove(Vector3 direction)
     {
