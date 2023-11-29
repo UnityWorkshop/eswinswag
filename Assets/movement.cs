@@ -43,5 +43,10 @@ public class Movement : MonoBehaviour
         return true;
     }
 
+    public void delete()
+    {
+        Destroy(gameObject);
+    }
+
 
 }

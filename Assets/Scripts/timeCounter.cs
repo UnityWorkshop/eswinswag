@@ -6,18 +6,8 @@ using UnityEngine;
 
 public class timeCounter : MonoBehaviour
 {
-    [SerializeField] GameObject textObject;
-
-    private TMP_Text timeText;
-    // Start is called before the first frame update
-    void Start()
+    public void count()
     {
-        timeText = textObject.GetComponent<TMP_Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        timeText.text = Time.time.ToString("F2");
+        this.GetComponent<TMP_Text>().text = Time.time.ToString("F2");
     }
 }
