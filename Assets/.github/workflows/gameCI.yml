@@ -4,8 +4,6 @@ name: Build
 
 on:
   master: ["push"]
-  #  for testing purposes:
-  7-butler-ci-gameci-for-itchio-automated-publish: ["push"]
 
 permissions:
   contents: read
