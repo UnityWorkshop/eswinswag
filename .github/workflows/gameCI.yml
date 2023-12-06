@@ -3,7 +3,7 @@
 name: Build
 
 on:
-  develop: ["push"]
+  ["push"]
 
 permissions:
   contents: read
