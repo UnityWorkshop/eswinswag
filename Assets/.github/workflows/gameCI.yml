@@ -4,6 +4,7 @@ name: Build
 
 on:
   master: ["push"]
+  develop: ["push"]
 
 permissions:
   contents: read
