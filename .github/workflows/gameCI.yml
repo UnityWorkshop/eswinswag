@@ -3,8 +3,11 @@
 name: Build
 
 on:
-  ["push"]
-
+  push:
+    branches:
+      - master
+      - develop
+        
 permissions:
   contents: read
 
