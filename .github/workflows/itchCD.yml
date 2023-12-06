@@ -1,17 +1,17 @@
 ﻿
 
-name: Build
+name: Continuous Itch Deployment
 
 on:
   push:
     branches:
-      - develop
-        
+      - master
+
 permissions:
   contents: read
 
 jobs:
-  build:
+  build-windows:
 
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: false
-      
+
       # Cache
       - uses: actions/cache@v3
         with:
@@ -29,7 +29,7 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-      
+
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v4
@@ -39,9 +39,33 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
-      
+
       # Output
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: Build
+          name: StandaloneWindows64Artifact
           path: build
+          
+          
+          
+  release-windows:
+    needs: build-windows
+    runs-on: ubuntu-latest
+    
+    steps:
+        
+    # Download the artifact from the "build" job
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: StandaloneWindows64Artifact
+        path: build/windows
+        
+    - uses: manleydev/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: windows
+        ITCH_GAME: eswinswag
+        ITCH_USER: conventionalrebels
+        PACKAGE: build/windows
