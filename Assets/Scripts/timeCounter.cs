@@ -9,7 +9,7 @@ public class timeCounter : MonoBehaviour
 {
     private int minutes = 0;
     private int seconds = 0;
-    public void count()
+    public void updateCount()
     {
         //this.GetComponent<TMP_Text>().text = Time.time.ToString("F2")
         this.GetComponent<TMP_Text>().text = time();
