@@ -20,22 +20,14 @@ public class TimeCounter : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Mathf.Ceil(Time.fixedTime) % 60 == 0)
-        {
-            minutes = minutes + 1;
-        }
-        Debug.Log("Minutes: " + minutes);
+        updateCount();
     }
 
     public String time()
     {
-        int seconds = (int) Mathf.Ceil(Time.fixedTime);
-        if (seconds % 60 == 59 && lastMinuteUpdateSeconds != seconds)
-        {
-            minutes = minutes + 1;
-            lastMinuteUpdateSeconds = seconds;
-        }
-        //Debug.Log(Time.fixedTime);
-        return minutes.ToString();
+        int secondsSinceStart = (int) Mathf.Floor(Time.fixedTime);
+        seconds = secondsSinceStart % 60;
+        minutes = (secondsSinceStart - seconds) / 60;
+        return $"{minutes:00}:{seconds:00}";
     }
 }
