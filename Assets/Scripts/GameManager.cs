@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject message;
     [SerializeField] GameObject targetBlock;
-    [SerializeField] TMP_Text timeTMP;
+    [FormerlySerializedAs("timeTMP")]
+    [SerializeField] TimeCounter counter;
 
     bool _won;
 
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
         else
         {
             message.SetActive(false);
-            timeTMP.GetComponent<timeCounter>().count();
+            counter.updateCount();
         }
     }
 }
