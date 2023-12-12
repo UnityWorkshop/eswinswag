@@ -10,6 +10,8 @@ public class TimeCounter : MonoBehaviour
 {
     private int minutes = 0;
     private int seconds = 0;
+
+    private int lastMinuteUpdateSeconds;
     public void updateCount()
     {
         //this.GetComponent<TMP_Text>().text = Time.time.ToString("F2")
@@ -27,10 +29,11 @@ public class TimeCounter : MonoBehaviour
 
     public String time()
     {
-        float time = Mathf.Round(Time.fixedTime);
-        if (time % 60 == 0)
+        int seconds = (int) Mathf.Ceil(Time.fixedTime);
+        if (seconds % 60 == 59 && lastMinuteUpdateSeconds != seconds)
         {
             minutes = minutes + 1;
+            lastMinuteUpdateSeconds = seconds;
         }
         //Debug.Log(Time.fixedTime);
         return minutes.ToString();
