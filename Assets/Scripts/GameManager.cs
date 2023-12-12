@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject targetBlock;
     [FormerlySerializedAs("timeTMP")]
     [SerializeField] TimeCounter counter;
+    [SerializeField] GameObject swag;
 
     bool _won;
 
@@ -29,6 +30,11 @@ public class GameManager : MonoBehaviour
         {
             message.SetActive(false);
             counter.updateCount();
+        }
+
+        if (player.transform.position == swag.transform.position)
+        {
+            Destroy(swag);
         }
     }
 }
