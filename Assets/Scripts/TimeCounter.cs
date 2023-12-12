@@ -5,7 +5,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class timeCounter : MonoBehaviour
+[RequireComponent(typeof(TMP_Text))]
+public class TimeCounter : MonoBehaviour
 {
     private int minutes = 0;
     private int seconds = 0;

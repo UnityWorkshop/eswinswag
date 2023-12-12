@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject message;
     [SerializeField] GameObject targetBlock;
     [FormerlySerializedAs("timeTMP")]
-    [SerializeField] timeCounter counter;
+    [SerializeField] TimeCounter counter;
 
     bool _won;
 
