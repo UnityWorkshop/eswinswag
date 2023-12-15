@@ -26,13 +26,13 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(key))
         {
-            Move(direction,transform.position,gameObject);
+            Move(direction,gameObject);
         }
     }
 
-    void Move(Vector3 direction, Vector3 position,GameObject current)
+    void Move(Vector3 direction,GameObject current)
     {
-        if (CheckMove(direction,position))
+        if (CheckMove(direction,current.transform.position))
         {
             current.transform.position += direction; 
         }
@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
         {
             if (position + direction == current.transform.position)
             {
-                Move(direction, current.transform.position,current.gameObject);
+                Move(direction,current.gameObject);
 
             }
         }
