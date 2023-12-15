@@ -16,7 +16,6 @@ namespace DefaultNamespace
             message.SetActive(true);
             player.GetComponent<Movement>().delete();
             _won = true;
-            
         }
 
         public void Update()
