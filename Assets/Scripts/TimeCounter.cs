@@ -17,12 +17,6 @@ public class TimeCounter : MonoBehaviour
         //this.GetComponent<TMP_Text>().text = Time.time.ToString("F2")
         this.GetComponent<TMP_Text>().text = time();
     }
-
-    public void FixedUpdate()
-    {
-        updateCount();
-    }
-
     public String time()
     {
         int secondsSinceStart = (int) Mathf.Floor(Time.fixedTime);
