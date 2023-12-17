@@ -2,31 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject message;
-    [SerializeField] GameObject targetBlock;
-    [SerializeField] TMP_Text timeTMP;
-
-    bool _won;
-
+    [SerializeField] GameObject player;  
     // Update is called once per frame
     void Update()
     {
-        if (_won)
-            return;
-        if (player.transform.position == targetBlock.transform.position)
+        var findObjectsOfType = FindObjectsOfType<Collectable>();
+        foreach (var collectable in findObjectsOfType)
         {
-            message.SetActive(true);
-            player.GetComponent<Movement>().delete();
-            _won = true;
-        }
-        else
-        {
-            message.SetActive(false);
-            timeTMP.GetComponent<timeCounter>().count();
+            if (player.transform.position == collectable.transform.position)
+            {
+                collectable.OnCollect();
+            }
         }
     }
 }
