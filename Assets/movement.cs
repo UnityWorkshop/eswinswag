@@ -30,12 +30,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void Move(Vector3 direction,GameObject current)
+    bool Move(Vector3 direction,GameObject current)
     {
-        if (CheckMove(direction,current.transform.position))
-        {
-            current.transform.position += direction; 
-        }
+        if (!CheckMove(direction, current.transform.position))
+            return false;
+        current.transform.position += direction;
+        return true;
     }
     
     bool CheckMove(Vector3 direction, Vector3 position)
@@ -55,8 +55,8 @@ public class Movement : MonoBehaviour
         {
             if (position + direction == current.transform.position)
             {
-                Move(direction,current.gameObject);
-
+                if (!Move(direction, current.gameObject))
+                    return false;
             }
         }
 
