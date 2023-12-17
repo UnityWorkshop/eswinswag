@@ -26,40 +26,72 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(key))
         {
-            Move(direction,gameObject);
+            TryMove(direction,gameObject);
         }
     }
 
-    void Move(Vector3 direction,GameObject current)
-    {
-        if (CheckMove(direction,current.transform.position))
-        {
-            current.transform.position += direction; 
-        }
-    }
-    
-    bool CheckMove(Vector3 direction, Vector3 position)
+    // void Move(Vector3 direction,GameObject current)
+    // {
+    //     if (CheckMove(direction,current.transform.position))
+    //     {
+    //         current.transform.position += direction; 
+    //     }
+    // }
+    //
+    // bool CheckMove(Vector3 direction, Vector3 position)
+    // {
+    //     Box[] boxes = FindObjectsOfType<Box>();
+    //     Wall[] walls = FindObjectsOfType<Wall>();
+    //     
+    //     foreach (Wall current in walls)
+    //     {
+    //         if (position + direction == current.transform.position)
+    //         {
+    //             return false;
+    //         }
+    //     }
+    //
+    //     foreach (Box current in boxes)
+    //     {
+    //         if (position + direction == current.transform.position)
+    //         {
+    //             Move(direction,current.gameObject);
+    //
+    //         }
+    //     }
+    //
+    //     return true;
+    // }
+
+
+    bool TryMove(Vector3 direction,GameObject current)
     {
         Box[] boxes = FindObjectsOfType<Box>();
         Wall[] walls = FindObjectsOfType<Wall>();
         
-        foreach (Wall current in walls)
+        //Check Walls
+        foreach (Wall wall in walls)
         {
-            if (position + direction == current.transform.position)
+            if (current.transform.position + direction == wall.transform.position)
             {
                 return false;
             }
         }
 
-        foreach (Box current in boxes)
+        //Check Boxes recursively
+        foreach (Box box in boxes)
         {
-            if (position + direction == current.transform.position)
+            if (current.transform.position + direction == box.transform.position)
             {
-                Move(direction,current.gameObject);
-
+                if (!TryMove(direction,box.gameObject))
+                {
+                    return false;
+                }
             }
         }
-
+        
+        //Move
+        current.transform.position += direction;
         return true;
     }
 
