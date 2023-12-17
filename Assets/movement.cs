@@ -30,39 +30,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    // void Move(Vector3 direction,GameObject current)
-    // {
-    //     if (CheckMove(direction,current.transform.position))
-    //     {
-    //         current.transform.position += direction; 
-    //     }
-    // }
-    //
-    // bool CheckMove(Vector3 direction, Vector3 position)
-    // {
-    //     Box[] boxes = FindObjectsOfType<Box>();
-    //     Wall[] walls = FindObjectsOfType<Wall>();
-    //     
-    //     foreach (Wall current in walls)
-    //     {
-    //         if (position + direction == current.transform.position)
-    //         {
-    //             return false;
-    //         }
-    //     }
-    //
-    //     foreach (Box current in boxes)
-    //     {
-    //         if (position + direction == current.transform.position)
-    //         {
-    //             Move(direction,current.gameObject);
-    //
-    //         }
-    //     }
-    //
-    //     return true;
-    // }
-
 
     bool TryMove(Vector3 direction,GameObject current)
     {
