@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 public class Movement : MonoBehaviour
 {
@@ -14,38 +16,54 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(KeyCode.W, Vector3.up);
-        Move(KeyCode.A, Vector3.left);
-        Move(KeyCode.S, Vector3.down);
-        Move(KeyCode.D, Vector3.right);
+        PlayerMove(KeyCode.W, Vector3.up);
+        PlayerMove(KeyCode.A, Vector3.left);
+        PlayerMove(KeyCode.S, Vector3.down);
+        PlayerMove(KeyCode.D, Vector3.right);
     }
 
-    void Move(KeyCode key,Vector3 direction)
+    void PlayerMove(KeyCode key,Vector3 direction)
     {
         if (Input.GetKeyDown(key))
         {
-            if (CheckMove(direction))
-            {
-                transform.position += direction;
-            }
+            TryMove(direction,gameObject);
         }
     }
 
-    bool CheckMove(Vector3 direction)
+
+    bool TryMove(Vector3 direction,GameObject current)
     {
+        Box[] boxes = FindObjectsOfType<Box>();
         Wall[] walls = FindObjectsOfType<Wall>();
-        foreach (Wall current in walls)
+        
+        //Check Walls
+        foreach (Wall wall in walls)
         {
-            if (transform.position + direction==current.transform.position) {
+            if (current.transform.position + direction == wall.transform.position)
+            {
                 return false;
-             }
+            }
         }
+
+        //Check Boxes recursively
+        foreach (Box box in boxes)
+        {
+            if (current.transform.position + direction == box.transform.position)
+            {
+                if (!box.CanMove()) return false;
+                if (!TryMove(direction,box.gameObject)) return false;
+                
+            }
+        }
+        
+        //Move
+        current.transform.position += direction;
         return true;
     }
 
     public void delete()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 
