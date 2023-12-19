@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
 
     public void delete()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 
