@@ -50,10 +50,9 @@ public class Movement : MonoBehaviour
         {
             if (current.transform.position + direction == box.transform.position)
             {
-                if (!TryMove(direction,box.gameObject))
-                {
-                    return false;
-                }
+                if (!box.CanMove()) return false;
+                if (!TryMove(direction,box.gameObject)) return false;
+                
             }
         }
         
