@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class MetalBox : Box
 {
-    public bool CanMove() => Swag.swagCounter >= 3;
+    public override bool CanMove() => Swag.swagCounter >= 3;
 }

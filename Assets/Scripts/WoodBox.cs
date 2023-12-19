@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class WoodBox : Box
 {
-    public bool CanMove() => Swag.swagCounter >= 2;
+    public override bool CanMove() => Swag.swagCounter >= 2;
 }
