@@ -20,6 +20,6 @@ public class SwagOMeter : MonoBehaviour
 
     private void Update()
     {
-        _txt.text = Swag.swagCounter + " swags";
+        _txt.text = $"{Swag.swagCounter} swags";
     }
 }
