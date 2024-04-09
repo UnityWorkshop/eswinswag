@@ -16,13 +16,19 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMove(KeyCode.W, Vector3.up);
-        PlayerMove(KeyCode.A, Vector3.left);
-        PlayerMove(KeyCode.S, Vector3.down);
-        PlayerMove(KeyCode.D, Vector3.right);
+        CheckPlayerMove(KeyCode.W, Vector3.up);
+        CheckPlayerMove(KeyCode.A, Vector3.left);
+        CheckPlayerMove(KeyCode.S, Vector3.down);
+        CheckPlayerMove(KeyCode.D, Vector3.right);
     }
 
-    void PlayerMove(KeyCode key,Vector3 direction)
+    public void MovePlayerUp() => TryMove(Vector3.up,gameObject);
+    public void MovePlayerDown() => TryMove(Vector3.down,gameObject);
+    public void MovePlayerLeft() => TryMove(Vector3.left,gameObject);
+    public void MovePlayerRight() => TryMove(Vector3.right,gameObject);
+        
+
+    void CheckPlayerMove(KeyCode key,Vector3 direction)
     {
         if (Input.GetKeyDown(key))
         {
