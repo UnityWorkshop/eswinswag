@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class Destination : Collectable
     {
-        bool _won;
+        private bool _won;
         
         [SerializeField] GameObject player;
         [SerializeField] GameObject message;
@@ -14,8 +15,15 @@ namespace DefaultNamespace
         public override void OnCollect()
         {
             message.SetActive(true);
-            player.GetComponent<Movement>().delete();
+            player.GetComponent<Movement>().enabled = false;
             _won = true;
+        }
+
+        public void Reset()
+        {
+            message.SetActive(false);
+            player.GetComponent<Movement>().enabled = true;
+            _won = false;
         }
 
         public void Update()

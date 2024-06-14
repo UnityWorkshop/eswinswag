@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         var findObjectsOfType = FindObjectsOfType<Collectable>();
         foreach (var collectable in findObjectsOfType)
         {
-            if (player.transform.position == collectable.transform.position)
+            if (player.transform.position == collectable.transform.position && !collectable.disabled)
             {
                 collectable.OnCollect();
             }
