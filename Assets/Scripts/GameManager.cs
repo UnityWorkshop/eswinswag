@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,5 +19,20 @@ public class GameManager : MonoBehaviour
                 collectable.OnCollect();
             }
         }
+    }
+
+    private void Start()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        
+        Screen.autorotateToPortrait = false;
+
+        Screen.autorotateToPortraitUpsideDown = false;
+        
+        Screen.autorotateToLandscapeLeft = true;
+
+        Screen.autorotateToLandscapeRight = true;
+
+        Screen.orientation = ScreenOrientation.AutoRotation;
     }
 }
