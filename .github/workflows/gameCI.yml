@@ -10,7 +10,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: [ self-hosted, unity, eswinswag ]
+    runs-on: ubuntu-latest
     steps:
 
       # Checkout
