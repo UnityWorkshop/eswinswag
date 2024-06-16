@@ -2,10 +2,7 @@
 
 name: Build
 
-on:
-  push:
-    branches:
-      - develop
+on: push
         
 permissions:
   contents: read
