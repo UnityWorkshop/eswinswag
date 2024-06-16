@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Loaded");
         startPosition = transform.position;
     }
 }

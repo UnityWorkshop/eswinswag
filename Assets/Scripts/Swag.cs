@@ -8,26 +8,24 @@ namespace DefaultNamespace
     public class Swag : Collectable
     {
         public static int swagCounter;
-        private SpriteRenderer spriteRenderer;
+        private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
-            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         }
 
         public override void OnCollect()
         {
             swagCounter++;
             disabled = true;
-            spriteRenderer.enabled = false;
+            _spriteRenderer.enabled = false;
         }
 
         public void Reset()
         {
             disabled = false;
-            spriteRenderer.enabled = true;
-
-
+            _spriteRenderer.enabled = true;
         }
     }
 }

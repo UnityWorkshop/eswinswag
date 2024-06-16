@@ -6,7 +6,7 @@ using UnityEngine;
 public class ResetButton : MonoBehaviour
 {
     private Destination destination;
-    public void Reset()
+    public void ResetGame()
     {
         foreach (Box box in Object.FindObjectsOfType<Box>())
         {
