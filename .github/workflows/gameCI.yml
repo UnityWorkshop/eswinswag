@@ -13,7 +13,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: [ self-hosted, unity ]
+    runs-on: [ self-hosted, unity, eswinswag ]
     steps:
 
       # Checkout
