@@ -56,7 +56,7 @@ namespace build
                     PlayerSettings.Android.keystorePass = androidKeystorePass;
                     PlayerSettings.Android.keystoreName = "user.keystore";
 
-                    scenes = new[] { "Assets/Scenes/Menu.unity" };
+                    scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "MOBILE";
                     buildTarget = BuildTarget.Android;
                     PlayerSettings.applicationIdentifier = "com.massivecreationlab.eswinswag";
@@ -65,7 +65,7 @@ namespace build
                     appendix = ".aab";
                     break;
                 case "iOS":
-                    scenes = new[] { "Assets/Scenes/Menu.unity" };
+                    scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "MOBILE";
                     buildTarget = BuildTarget.iOS;
                     PlayerSettings.applicationIdentifier = "com.massivecreationlab.workshop.eswinswag";
@@ -73,17 +73,17 @@ namespace build
                     PlayerSettings.bundleVersion = versionString;
                     break;
                 case "LinuxStandalone64":
-                    scenes = new[] { "Assets/Scenes/Menu.unity" };
+                    scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "DESKTOP";
                     buildTarget = BuildTarget.StandaloneLinux64;
                     break;
                 case "Windows":
-                    scenes = new[] { "Assets/Scenes/Menu.unity" };
+                    scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "DESKTOP";
                     buildTarget = BuildTarget.StandaloneWindows64;
                     break;
                 case "Mac":
-                    scenes = new[] { "Assets/Scenes/Menu.unity" };
+                    scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "DESKTOP";
                     buildTarget = BuildTarget.StandaloneOSX;
                     break;
