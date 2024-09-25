@@ -7,8 +7,8 @@
   Eswinswag
 </h1>
 <p align="center">
-  <a href="https://github.com/UnityWorkshop/eswinswag/actions/workflows/gameCI.ym">
-    <img src="https://github.com/UnityWorkshop/eswinswag/actions/workflows/gameCI.yml/badge.svg" />
+  <a href="https://github.com/UnityWorkshop/eswinswag/actions/workflows/cd.yaml">
+    <img src="https://github.com/UnityWorkshop/eswinswag/actions/workflows/cd.yaml/badge.svg" />
   </a>
 </p>
 <p align="center">
