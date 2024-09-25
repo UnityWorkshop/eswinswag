@@ -4,6 +4,12 @@ on:
   pull_request:
     types:
       - closed
+  workflow_dispatch: 
+    inputs:
+      workflow_mode:
+        description: '[manual_tagging]'
+        required: false
+        default: 'manual_tagging'
 
 jobs:
   create-tag:
