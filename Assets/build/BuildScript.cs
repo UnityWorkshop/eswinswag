@@ -59,7 +59,7 @@ namespace build
                     scenes = new[] { "Assets/Scenes/Menu.unity" };
                     defineSymbols = "MOBILE";
                     buildTarget = BuildTarget.Android;
-                    PlayerSettings.applicationIdentifier = "com.massivecreationlab.workshop.roguelike";
+                    PlayerSettings.applicationIdentifier = "com.massivecreationlab.eswinswag";
                     PlayerSettings.Android.bundleVersionCode = versionCode;
                     PlayerSettings.bundleVersion = versionString;
                     appendix = ".aab";
@@ -68,7 +68,7 @@ namespace build
                     scenes = new[] { "Assets/Scenes/Menu.unity" };
                     defineSymbols = "MOBILE";
                     buildTarget = BuildTarget.iOS;
-                    PlayerSettings.applicationIdentifier = "com.massivecreationlab.workshop.roguelike.ios.test";
+                    PlayerSettings.applicationIdentifier = "com.massivecreationlab.workshop.eswinswag";
                     PlayerSettings.iOS.buildNumber = versionCode.ToString();
                     PlayerSettings.bundleVersion = versionString;
                     break;
