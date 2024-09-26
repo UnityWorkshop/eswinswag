@@ -30,17 +30,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        Screen.autorotateToPortrait = false;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.autorotateToLandscapeLeft = true;
-
-        Screen.autorotateToLandscapeRight = true;
-
-        Screen.orientation = ScreenOrientation.AutoRotation;
+        // Screen.orientation = ScreenOrientation.LandscapeLeft;
+        //
+        // Screen.autorotateToPortrait = false;
+        //
+        // Screen.autorotateToPortraitUpsideDown = false;
+        //
+        // Screen.autorotateToLandscapeLeft = true;
+        //
+        // Screen.autorotateToLandscapeRight = true;
+        //
+        // Screen.orientation = ScreenOrientation.AutoRotation;
 
         Swag.swagCounter = 0;
         _timeCounter = Object.FindFirstObjectByType<TimeCounter>();
