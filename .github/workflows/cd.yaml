@@ -56,7 +56,7 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - Android
+#          - Android
           - iOS
           - StandaloneWindows64
     #          - StandaloneLinux64
@@ -174,53 +174,53 @@ jobs:
 
 
 
-  deployToGooglePlay:
-    name: Release to the Google Play Store
-    runs-on: ubuntu-latest
-    if: github.event.action == 'published'
-    needs: [buildWithLinux]
-    env:
-      GOOGLE_PLAY_KEY_FILE: ${{ secrets.GOOGLE_PLAY_KEY_FILE }}
-      GOOGLE_PLAY_KEY_FILE_PATH:
-        ${{ format('{0}/fastlane/google-fastlane.json', github.workspace) }}
-      ANDROID_BUILD_FILE_PATH: ${{ format('{0}/build/Android/Android.aab', github.workspace) }}
-      ANDROID_PACKAGE_NAME: com.massivecreationlab.eswinswag
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Install MinIO Client
-        run: |
-          curl https://dl.min.io/client/mc/release/linux-amd64/mc \
-          --create-dirs \
-          -o $HOME/minio-binaries/mc
-
-          chmod +x $HOME/minio-binaries/mc
-          echo "$HOME/minio-binaries" >> $GITHUB_PATH
-
-      - name: Configure MinIO Client
-        run: |
-          mc alias set s3mcl https://s3.api.massivecreationlab.com ${{ secrets.MINIO_ACCESS_KEY }} ${{ secrets.MINIO_SECRET_KEY }}
-      - name: Download iOS Artifact
-        run: |
-          mc cp --recursive s3mcl/eswinswag-artifacts/Android/ ${{ format('{0}/build/Android', github.workspace) }}
-
-      - name: Add Authentication
-        run: echo "$GOOGLE_PLAY_KEY_FILE" > $GOOGLE_PLAY_KEY_FILE_PATH
-      - name: Set up Fastlane
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-          bundler-cache: true
-      - name: Upload to Google Play Internal
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'android internal' # Change to upload to a different lane
-      #      - name: Cleanup to avoid storage limit
-      #        if: always()
-      #        uses: geekyeggo/delete-artifact@v2
-      #        with:
-      #          name: build-Android
+#  deployToGooglePlay:
+#    name: Release to the Google Play Store
+#    runs-on: ubuntu-latest
+#    if: github.event.action == 'published'
+#    needs: [buildWithLinux]
+#    env:
+#      GOOGLE_PLAY_KEY_FILE: ${{ secrets.GOOGLE_PLAY_KEY_FILE }}
+#      GOOGLE_PLAY_KEY_FILE_PATH:
+#        ${{ format('{0}/fastlane/google-fastlane.json', github.workspace) }}
+#      ANDROID_BUILD_FILE_PATH: ${{ format('{0}/build/Android/Android.aab', github.workspace) }}
+#      ANDROID_PACKAGE_NAME: com.massivecreationlab.eswinswag
+#    steps:
+#      - name: Checkout Repository
+#        uses: actions/checkout@v4
+#
+#      - name: Install MinIO Client
+#        run: |
+#          curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+#          --create-dirs \
+#          -o $HOME/minio-binaries/mc
+#
+#          chmod +x $HOME/minio-binaries/mc
+#          echo "$HOME/minio-binaries" >> $GITHUB_PATH
+#
+#      - name: Configure MinIO Client
+#        run: |
+#          mc alias set s3mcl https://s3.api.massivecreationlab.com ${{ secrets.MINIO_ACCESS_KEY }} ${{ secrets.MINIO_SECRET_KEY }}
+#      - name: Download iOS Artifact
+#        run: |
+#          mc cp --recursive s3mcl/eswinswag-artifacts/Android/ ${{ format('{0}/build/Android', github.workspace) }}
+#
+#      - name: Add Authentication
+#        run: echo "$GOOGLE_PLAY_KEY_FILE" > $GOOGLE_PLAY_KEY_FILE_PATH
+#      - name: Set up Fastlane
+#        uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 3.2
+#          bundler-cache: true
+#      - name: Upload to Google Play Internal
+#        uses: maierj/fastlane-action@v3.0.0
+#        with:
+#          lane: 'android internal' # Change to upload to a different lane
+#      #      - name: Cleanup to avoid storage limit
+#      #        if: always()
+#      #        uses: geekyeggo/delete-artifact@v2
+#      #        with:
+#      #          name: build-Android
   
   deployToItchIO:
     if: github.event.action == 'published'
