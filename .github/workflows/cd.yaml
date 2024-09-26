@@ -258,7 +258,8 @@ jobs:
   announceReleaseToSocialMedia:
     name: Announce Release to Social Media
     runs-on: ubuntu-latest
-    needs: [  versions, deployToAppStore, deployToGooglePlay, deployToItchIO ]
+#    needs: [  versions, deployToAppStore, deployToGooglePlay, deployToItchIO ]
+    needs: [  versions, deployToAppStore, deployToItchIO ]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
