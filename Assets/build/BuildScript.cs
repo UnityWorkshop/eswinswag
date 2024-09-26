@@ -81,6 +81,7 @@ namespace build
                     scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "DESKTOP";
                     buildTarget = BuildTarget.StandaloneWindows64;
+                    appendix = ".exe";
                     break;
                 case "Mac":
                     scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
