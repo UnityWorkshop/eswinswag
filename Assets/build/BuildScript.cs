@@ -77,7 +77,7 @@ namespace build
                     defineSymbols = "DESKTOP";
                     buildTarget = BuildTarget.StandaloneLinux64;
                     break;
-                case "Windows":
+                case "StandaloneWindows64":
                     scenes = new[] { "Assets/Scenes/Menu.unity", "Assets/Scenes/Game.unity" };
                     defineSymbols = "DESKTOP";
                     buildTarget = BuildTarget.StandaloneWindows64;
