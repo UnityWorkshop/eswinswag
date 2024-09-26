@@ -1,6 +1,9 @@
 ﻿name: Tag on Merge
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types:
       - closed
